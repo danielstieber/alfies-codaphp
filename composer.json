@@ -1,0 +1,5 @@
+{
+    "require": {
+        "danielstieber/coda-php": "^0.2.0"
+    }
+}

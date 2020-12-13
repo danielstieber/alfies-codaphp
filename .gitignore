@@ -1,0 +1,5 @@
+.DS_Store
+/.codaphp_cache
+/vendor
+/css/*.css
+/js/*.js
