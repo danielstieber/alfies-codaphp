@@ -30,14 +30,14 @@
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	</head>
 	<body class="w-full overflow-x-hidden antialiased bg-yellow-50">
-		<div class="max-w-screen-md w-full mt-16 mx-auto px-16">
+		<div class="max-w-screen-md w-full mt-16 mx-auto px-8 md:px-16">
 			<header>
 				<h1 class="sr-only">Alfies Restaurant & Bar</h1>
 <?php include('img/logo.svg')?>
 			</header>
 			<main>
 <?php if($notice) { ?>
-					<div class="w-3/4 mx-auto mt-12 bg-white px-8 py-6 bold text-gray-800"><?=$notice?></div>
+					<div class="md:w-3/4 mx-auto mt-12 bg-white px-8 py-6 bold text-gray-800"><?=$notice?></div>
 <?php } ?>
 				<h2 class="text-xl font-bold mt-12 mb-4">Alfies Lunch Break</h2>
 				<div>
@@ -47,10 +47,10 @@
 <?php 	foreach($dishes as $dish) { ?>
 							<div class="w-full flex justify-between mb-2">
 								<p class=""><?=$dish['Name']?><sup class="ml-2 italic"><?=$dish['Allergens']?></sup>
-									<?= ($dish['Vegan'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-green-100 text-green-900">VEGAN</span>' : '' )?>
-									<?= ($dish['Hot'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-red-100 text-red-900">HOT</span>' : '' )?>
+									<?= ($dish['Vegan'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-green-100 text-green-900">V<span class="hidden md:inline-block">EGAN</span></span>' : '' )?>
+									<?= ($dish['Hot'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-red-100 text-red-900">H<span class="hidden md:inline-block">OT</span></span>' : '' )?>
 								</p>
-								<span class="font-bold"><?=$dish['Price']?> <?=($dish['Price'] ? '€' : '')?></span>
+								<span class="font-bold"><nobr><?=$dish['Price']?> <?=($dish['Price'] ? '€' : '')?></nobr></span>
 							</div>
 <?php } ?>
 					</div>
@@ -58,8 +58,8 @@
 				</div>
 			</main>
 		</div>
-		<div class="absolute w-full flex bottom-0 h-12 bg-gray-800 text-white">
-			<p class="self-center mx-auto text-lg">This is a demo for the <a href="https://github.com/danielstieber/CodaPHP" class="underline text-yellow-300" target="_blank">CodaPHP library</a>. The content of this site can be managed by this <a href="https://coda.io/d/Alfies-Restaurant_dFFb1Ekjo02" class="underline text-yellow-300" target="_blank">Coda Doc</a>.</p>
+		<div class="fixed w-full py-2 px-4 flex bottom-0 bg-gray-800 text-white">
+			<p class="self-center mx-auto text-lg text-center">This is a demo for the <a href="https://github.com/danielstieber/CodaPHP" class="underline text-yellow-300" target="_blank">CodaPHP library</a>. The content of this site can be managed by this <a href="https://coda.io/d/Alfies-Restaurant_dFFb1Ekjo02" class="underline text-yellow-300" target="_blank">Coda Doc</a>.</p>
 		</div>
 	</body>
 </html>
