@@ -1,4 +1,4 @@
-Alifes CodaPHP-Demo
+Alfies CodaPHP-Demo
 =======================
 
 [Open Frontend](https://stieber.uber.space/alfies-codaphp)
