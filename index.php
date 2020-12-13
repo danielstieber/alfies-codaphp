@@ -35,7 +35,7 @@
 				<h1 class="sr-only">Alfies Restaurant & Bar</h1>
 <?php include('img/logo.svg')?>
 			</header>
-			<main>
+			<main class="mb-36">
 <?php if($notice) { ?>
 					<div class="md:w-3/4 mx-auto mt-12 bg-white px-8 py-6 bold text-gray-800"><?=$notice?></div>
 <?php } ?>
@@ -58,7 +58,7 @@
 				</div>
 			</main>
 		</div>
-		<div class="fixed w-full py-2 px-4 flex bottom-0 bg-gray-800 text-white">
+		<div class="fixed w-full pt-2 pb-4 px-4 flex bottom-0 bg-gray-800 text-white">
 			<p class="self-center mx-auto text-lg text-center">This is a demo for the <a href="https://github.com/danielstieber/CodaPHP" class="underline text-yellow-300" target="_blank">CodaPHP library</a>. The content of this site can be managed by this <a href="https://coda.io/d/Alfies-Restaurant_dFFb1Ekjo02" class="underline text-yellow-300" target="_blank">Coda Doc</a>.</p>
 		</div>
 	</body>
