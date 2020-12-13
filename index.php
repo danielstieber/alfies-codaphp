@@ -11,13 +11,13 @@
 
 	// load content
 	$notice = $coda->getRow($doc, 'Other', 'Notice')['values']['Content'];
-	$menuItems = $coda->listRows($doc, 'Lunch menu')['items'];
+	$menuItems = $coda->listRows($doc, 'Lunch menu', ['sortBy' => 'natural'])['items'];
 	// group by days
 	$days = [];
 	foreach($menuItems as $menuItem) {
-		$days[$menuItem['values']['Day']][] = $menuItem['values'];
+		$date = new DateTime($menuItem['values']['Day']);
+		$days[$date->format('l, M jS')][] = $menuItem['values'];
 	}
-	$days = array_reverse($days); // make monday first day
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -36,20 +36,20 @@
 			</header>
 			<main>
 <?php if($notice) { ?>
-					<div class="w-3/4 mx-auto mt-12 bg-white px-8 py-6 italic"><?=$notice?></div>
+					<div class="w-3/4 mx-auto mt-12 bg-white px-8 py-6 bold text-gray-800"><?=$notice?></div>
 <?php } ?>
-				<h2 class="text-lg font-bold mt-12 mb-6">This weeks lunch</h2>
+				<h2 class="text-xl font-bold mt-12 mb-4">Alfies Lunch Break</h2>
 				<div>
 <?php foreach($days as $day => $dishes) { ?>
 					<div class="mb-6">
 						<h3 class="font-bold mb-2"><?=$day?></h3>
 <?php 	foreach($dishes as $dish) { ?>
 							<div class="w-full flex justify-between mb-2">
-								<p class="italic"><?=$dish['Name']?><sup class="ml-2"><?=$dish['Allergens']?></sup>
+								<p class=""><?=$dish['Name']?><sup class="ml-2 italic"><?=$dish['Allergens']?></sup>
 									<?= ($dish['Vegan'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-green-100 text-green-900">VEGAN</span>' : '' )?>
-									<?= ($dish['Hot'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-red-100 text-red-900">VEGAN</span>' : '' )?>
+									<?= ($dish['Hot'] ? '<span class="ml-2 py-1 px-2 text-xs font-bold rounded-full bg-red-100 text-red-900">HOT</span>' : '' )?>
 								</p>
-								<span class="font-bold"><?=$dish['Price']?></span>
+								<span class="font-bold"><?=$dish['Price']?> <?=($dish['Price'] ? '€' : '')?></span>
 							</div>
 <?php } ?>
 					</div>
@@ -58,7 +58,7 @@
 			</main>
 		</div>
 		<div class="absolute w-full flex bottom-0 h-12 bg-gray-800 text-white">
-			<p class="self-center mx-auto text-lg">This is a demo for the <a href="https://github.com/danielstieber/CodaPHP" class="underline text-yellow-300" target="_blank">CodaPHP library</a>. See the backend of the website <a href="https://coda.io/d/Alfies-Restaurant_dFFb1Ekjo02" class="underline text-yellow-300" target="_blank">here</a>.</p>
+			<p class="self-center mx-auto text-lg">This is a demo for the <a href="https://github.com/danielstieber/CodaPHP" class="underline text-yellow-300" target="_blank">CodaPHP library</a>. The content of this site can be managed by this <a href="https://coda.io/d/Alfies-Restaurant_dFFb1Ekjo02" class="underline text-yellow-300" target="_blank">Coda Doc</a>.</p>
 		</div>
 	</body>
 </html>
