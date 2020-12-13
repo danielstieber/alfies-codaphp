@@ -16,6 +16,7 @@
 	$days = [];
 	foreach($menuItems as $menuItem) {
 		$date = new DateTime($menuItem['values']['Day']);
+		$date->modify('+1 day');
 		$days[$date->format('l, M jS')][] = $menuItem['values'];
 	}
 ?>
